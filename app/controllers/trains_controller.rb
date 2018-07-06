@@ -10,6 +10,8 @@ class TrainsController < ApplicationController
 
   def new
     @train = Train.new
+    @stations = RailwayStation.all
+    @routes = Route.all
   end
 
   def create
@@ -45,6 +47,6 @@ class TrainsController < ApplicationController
   end
 
   def train_params
-    params.require(:train).permit(:number)
+    params.require(:train).permit(:number, :current_station_id, :route_id)
   end
 end

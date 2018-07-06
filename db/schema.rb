@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_07_06_090350) do
     t.datetime "updated_at", null: false
     t.integer "railway_station_id"
     t.integer "railway_stations_id"
+    t.integer "current_station_id"
     t.index ["railway_station_id"], name: "index_trains_on_railway_station_id"
     t.index ["railway_stations_id"], name: "index_trains_on_railway_stations_id"
   end
