@@ -38,7 +38,6 @@ class RoutesController < ApplicationController
     redirect_to routes_path, notice: 'Обьект путь удален.'
   end
 
-
   private
 
   def set_route
@@ -49,5 +48,3 @@ class RoutesController < ApplicationController
     params.require(:route).permit(:name)
   end
 end
-
-

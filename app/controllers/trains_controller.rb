@@ -38,7 +38,6 @@ class TrainsController < ApplicationController
     redirect_to trains_path, notice: 'Обьект поезд удален.'
   end
 
-
   private
 
   def set_train
