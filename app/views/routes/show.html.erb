@@ -27,8 +27,8 @@
       Список пуст
   <% else %>
     <ul>
-      <% @route.routes.each do |route| %>
-          <li><%= route.name %></li>
+      <% @route.trains.each do |train| %>
+          <li><%= train.number %></li>
       <% end %>
     </ul>
 <% end %>
