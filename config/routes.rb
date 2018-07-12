@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :trains do
-    resources :carriages, only: [:new, :create]
+    resources :carriages, only: %i[new create]
   end
   resources :railway_stations do
     member do

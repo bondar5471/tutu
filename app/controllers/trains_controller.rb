@@ -1,12 +1,11 @@
 class TrainsController < ApplicationController
-  before_action :set_train, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: %i[show edit update destroy]
 
   def index
     @trains = Train.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @train = Train.new
@@ -24,8 +23,7 @@ class TrainsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @train.update(train_params)
