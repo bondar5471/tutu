@@ -1,5 +1,6 @@
 class CarriagesController < ApplicationController
     before_action :find_train, only: [:create, :new]
+    before_action :find_carriage, only: [:show]
   
     def new
       @carriage = @train.carriages.build
@@ -17,7 +18,7 @@ class CarriagesController < ApplicationController
     private
   
     def carriage_params
-      params.require(:carriage).permit(:top_seats, :kind, :bottom_seats)
+      params.require(:carriage).permit(:top_seats, :type, :bottom_seats, :side_top_seats, :side_bottom_seats, :econom_seats)
     end
   
     def find_train
