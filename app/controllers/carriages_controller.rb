@@ -24,4 +24,8 @@ class CarriagesController < ApplicationController
   def find_train
     @train = Train.find(params[:train_id])
   end
+
+  def find_carriage
+    @carriage = Carriage.find(params[:id])
   end
+end

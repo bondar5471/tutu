@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_180_712_085_405) do
+ActiveRecord::Schema.define(version: 20_180_714_164_301) do
   create_table 'carriages', force: :cascade do |t|
     t.integer 'number'
     t.integer 'top_seats'
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20_180_712_085_405) do
   create_table 'railway_stations_routes', force: :cascade do |t|
     t.integer 'railway_station_id'
     t.integer 'route_id'
+    t.integer 'position'
+    t.datetime 'arrive_time'
+    t.datetime 'outgo_time'
+    t.integer 'station_index'
     t.index ['railway_station_id'], name: 'index_railway_stations_routes_on_railway_station_id'
     t.index ['route_id'], name: 'index_railway_stations_routes_on_route_id'
   end
@@ -49,6 +53,10 @@ ActiveRecord::Schema.define(version: 20_180_712_085_405) do
     t.integer 'train_id'
     t.integer 'base_station_id'
     t.integer 'end_station_id'
+    t.text 'user_first_name'
+    t.text 'user_last_name'
+    t.text 'user_middle_name'
+    t.text 'user_passport'
     t.index ['base_station_id'], name: 'index_tickets_on_base_station_id'
     t.index ['end_station_id'], name: 'index_tickets_on_end_station_id'
     t.index ['train_id'], name: 'index_tickets_on_train_id'
@@ -59,13 +67,26 @@ ActiveRecord::Schema.define(version: 20_180_712_085_405) do
     t.string 'number'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.integer 'railway_station_id'
     t.integer 'current_station_id'
     t.integer 'route_id'
     t.boolean 'order_carriage', default: false
+    t.index ['railway_station_id'], name: 'index_trains_on_railway_station_id'
   end
 
   create_table 'users', force: :cascade do |t|
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.string 'confirmation_token'
+    t.datetime 'confirmed_at'
+    t.datetime 'confirmation_sent_at'
+    t.string 'unconfirmed_email'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 end
