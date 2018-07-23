@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    railway_station: "Станция"
+    train: "Поезд"
+attributes:
+  railway_station:
+    title: "Название"
+  train:
+    number: "Номер" 
+    current_starion: "Текущая станция"
+  errors:
+    messages:
+      blank: "Не можеть быть пустымы"   

@@ -18,8 +18,8 @@ class Route < ApplicationRecord
     railway_stations.last
   end
 
-  def self.searched_routes(start_station, end_station)
-    Route.with_station(start_station) &
+  def self.searched_routes(base_station, end_station)
+    Route.with_station(base_station) &
       Route.with_station(end_station)
   end
 

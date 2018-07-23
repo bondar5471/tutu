@@ -1,16 +1,19 @@
-<h1>Покупка билета</h1>
+<h1>Form for buy ticket</h1>
 
-<%= form_for [@train, @ticket] do |f| %>
+<%= form_for [@train, @ticket], url: {action: "create"} do |f| %>
   <%= render 'common/errors', resource: @ticket %>
+
+  <%= f.hidden_field  :base_station_id, value: @ticket.base_station.id %>
+  <%= f.hidden_field  :end_station_id, value: @ticket.end_station.id %>
 
   <div class="field">
     <%= f.label :base_station %><br>
-    <%= f.text_field :base_station, value: @start_station.title, disabled: true %>
+    <%= f.text_field :base_station, value:  @ticket.base_station.title, disabled: true %>
   </div>
 
   <div class="field">
     <%= f.label :end_station %><br>
-    <%= f.text_field :end_station, value: @end_station.title, disabled: true %>
+    <%= f.text_field :end_station, value: @ticket.end_station.title, disabled: true %>
   </div>
 
   <div class="field">
@@ -33,11 +36,9 @@
     <%= f.text_field :user_passport %>
   </div>
 
-  <%= f.hidden_field :base_station, value: params[:base_station] %>
-  <%= f.hidden_field :end_station, value: params[:end_station] %>
-
   <div class="field">
-    <%= f.submit 'Создать билет' %><br>
+    <%= f.submit 'Create Ticket' %><br>
   </div>
+
 
 <% end %>

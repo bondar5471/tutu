@@ -4,8 +4,8 @@ class SearchesController < ApplicationController
   end
 
   def search
-    @start_station = RailwayStation.find(params[:start_station])
+    @base_station = RailwayStation.find(params[:base_station])
     @end_station = RailwayStation.find(params[:end_station])
-    @routes = Route.searched_routes(@start_station, @end_station)
+    @routes = Route.searched_routes(@base_station, @end_station)
   end
 end
