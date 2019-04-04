@@ -3,8 +3,56 @@
 <p>
   <strong>Номер:</strong>
   <%= @train.number %>
+</p>
+ <p>
+  <strong>На станции:</strong> 
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <%else%>
+    Не указано
+  <%end%>    
+ </p>
 
+ <p>
+  <strong>Путь</strong>
+  <% if @train.route.present?  %>
+      <%= @train.route.name %>
+  <% else %>
+      Нет пути
+  <% end %>
 </p>
 
+<div>
+  <strong>Вагоны</strong>
+  <% if @train.carriages.present?  %>
+      <p><storng>Бизнес класс</storng> <%= @train.business_carriages_count %></p>
+      <p><storng>Эконом класс</storng> <%= @train.econom_carriages_count %></p>
+      <table>
+        <thead>
+        <tr>
+          <th></th>
+          <th>Тип</th>
+          <th>Верхние</th>
+          <th>Нижние</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @train.carriages.each do |carriage| %>
+            <tr>
+              <td><%= carriage.id %></td>
+              <td><%= carriage.kind %></td>
+              <td><%= carriage.top_seats %></td>
+              <td><%= carriage.bottom_seats %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+  <% else %>
+    Нет указаных вагонов
+  <% end %>
+</div>
+
+<%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
 <%= link_to 'Изменить', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
