@@ -1,3 +1,3 @@
-class User < ActiveRecord::Base
-    has_many :tickets
+class User < ApplicationRecord
+  has_many :tickets
   end
